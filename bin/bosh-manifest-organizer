@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'bosh/manifest/organizer'
+
+Bosh::Manifest::Organizer.organize
