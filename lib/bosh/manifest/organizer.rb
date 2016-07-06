@@ -4,6 +4,18 @@ require 'yaml'
 module Bosh
   module Manifest
     module Organizer
+      TOP_LEVEL_KEY_ORDER = [
+        'director_uuid',
+        'name',
+        'releases',
+        'compilation',
+        'update',
+        'networks',
+        'properties',
+        'resource_pools',
+        'jobs'
+      ]
+
       def self.organize
         str = (STDIN.tty?) ? nil : $stdin.read
 
@@ -19,12 +31,10 @@ module Bosh
 
         new_hash = {}
 
-        if yml.key? 'director_uuid'
-          new_hash['director_uuid'] = yml['director_uuid']
-        end
-
-        if yml.key? 'name'
-          new_hash['name'] = yml['name']
+        TOP_LEVEL_KEY_ORDER.each do |key|
+          if yml.key? key
+            new_hash[key] = yml[key]
+          end
         end
 
         new_hash.merge!(yml)

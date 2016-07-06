@@ -11,8 +11,17 @@ describe Bosh::Manifest::Organizer do
       res = Bosh::Manifest::Organizer.organize_yml file_contents
       keys = YAML.load(res).keys
 
-      expect(keys[0]).to eq 'director_uuid'
-      expect(keys[1]).to eq 'name'
+      expect(keys).to eq [
+        'director_uuid',
+        'name',
+        'releases',
+        'compilation',
+        'update',
+        'networks',
+        'properties',
+        'resource_pools',
+        'jobs'
+      ]
     end
   end
 end
