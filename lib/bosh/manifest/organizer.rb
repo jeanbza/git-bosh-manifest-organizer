@@ -8,17 +8,28 @@ module Bosh
         str = (STDIN.tty?) ? nil : $stdin.read
 
         if str
-          yml = YAML.load str
-          self.organize_yml yml
+          puts self.organize_yml str
         else
           raise 'Incorrect usage: cat something.yml | bosh-manifest-organizer'
         end
       end
 
-      private
+      def self.organize_yml(str)
+        yml = YAML.load str
 
-      def self.organize_yml(yml)
-        p yml
+        new_hash = {}
+
+        if yml.key? 'director_uuid'
+          new_hash['director_uuid'] = yml['director_uuid']
+        end
+
+        if yml.key? 'name'
+          new_hash['name'] = yml['name']
+        end
+
+        new_hash.merge!(yml)
+
+        YAML.dump(new_hash)
       end
     end
   end

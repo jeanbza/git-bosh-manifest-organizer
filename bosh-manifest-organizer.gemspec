@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary = %q{Organize your bosh manifests!}
   spec.description = %q{Organize your bosh manifests!}
-  spec.homepage = "https://github.com/jadekler/bosh-manifest-organizer"
+  spec.homepage = "https://github.com/jadekler/git-bosh-manifest-organizer"
   spec.license = 'MIT'
 
   if spec.respond_to?(:metadata)
