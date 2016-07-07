@@ -1,5 +1,7 @@
 # Bosh::Manifest::Organizer
 
+[![Build Status](https://travis-ci.org/jadekler/git-bosh-manifest-organizer.svg?branch=master)](https://travis-ci.org/jadekler/git-bosh-manifest-organizer)
+
 Reorganize your bosh manifests!
 
 ## Installation
@@ -8,7 +10,22 @@ Reorganize your bosh manifests!
 
 ## Usage
 
+CLI:
+
 `bosh download manifest some-deployment | bosh-manifest-organizer`
+
+Library:
+
+1. Add `gem 'bosh-manifest-organizer'` to your `Gemfile`
+1. `bundle install`
+1. In code:
+
+    ```
+    require 'bosh-manifest-organizer'
+    
+    Bosh::Manifest::Organizer.organize_yml('foo: 5')
+    ```
+
 
 ## Development
 
